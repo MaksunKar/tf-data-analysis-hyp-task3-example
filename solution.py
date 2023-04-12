@@ -9,4 +9,4 @@ def solution(x: np.array) -> bool:  # Одна или две выборке на
 
     _, pvalue = w.ztest(x, value=500, alternative='larger')
 
-    return pvalue <= 0.06
+    return pvalue <= 0.07
