@@ -1,12 +1,15 @@
 import pandas as pd
 import numpy as np
-import statsmodels.stats.weightstats as w
+
+from scipy.stats import ttest_ind
 
 chat_id = 790154026  # Ваш chat ID, не меняйте название переменной
 
 
-def solution(x: np.array, y: np.array) -> bool:  # Одна или две выборке на входе, заполняется исходя из условия
-
-    _, pvalue = w.ztest(x, y, value=500, alternative='larger')
-
-    return pvalue <= 0.07
+def solution(x: np.array, y: np.array) -> bool:
+    result = ttest_ind(x, y)
+    alpha = 0.07
+    if result[1] < alpha:
+        return True
+    else:
+        return False
